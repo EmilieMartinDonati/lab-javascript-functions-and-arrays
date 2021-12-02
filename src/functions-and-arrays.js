@@ -49,7 +49,40 @@ function sumNumbers(param) {
 console.log(sumNumbers(numbers));
 
 // Iteration #3.1 Bonus:
-function sum() {}
+function sum(arrToAdd) {
+
+  let calcul = 0;
+
+  if (!arrToAdd.length) return 0;
+
+  else {
+
+  function converter (aMixedArray) {
+    for (let i = 0 ; i < aMixedArray.length ; i++) {
+
+      if (typeof aMixedArray[i] === 'string') {
+        aMixedArray[i] = aMixedArray[i].length;
+      }
+      if (aMixedArray[i] === true) {
+        aMixedArray[i] = 1;
+        }
+      if (aMixedArray[i] === false) {
+          aMixedArray[i] = 0;
+        }
+      if (typeof aMixedArray[i] === 'number' ) {
+          aMixedArray[i] = aMixedArray[i];
+      }
+    }
+  }
+  converter(arrToAdd);
+
+  for (let j = 0 ; j < arrToAdd.length ; j++) {
+    calcul += arrToAdd[j];
+
+  }
+  return calcul;
+  }
+}
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
@@ -91,7 +124,57 @@ function averageWordLength(arrayStr) {
 console.log(averageWordLength(wordsArr));
 
 // Bonus - Iteration #4.1
-function avg() {}
+
+//Mes crash test fonctionnent, l'unit testing non.
+
+const crashTestArray = ["ça", false, "ne", "marche", "pas", 1, true];
+
+const crashTest2 = [1, 2, 5, 7];
+
+function avg(anArrayAgain) {
+
+  if (!anArrayAgain.length) return null;
+
+else {
+
+ function convertisseur (aMixArray) {
+  for (let i = 0 ; i < aMixArray.length ; i++) {
+
+    if (typeof aMixArray[i] === 'string') {
+      aMixArray[i] = aMixArray[i].length;
+    }
+    if (aMixArray[i] === true) {
+      aMixArray[i] = Number(true);
+      }
+    if (aMixArray[i] === false) {
+        aMixArray[i] = Number(false);
+      }
+    // if (typeof aMixArray[i] === 'number' ) {
+    //     aMixArray[i] = aMixArray[i];
+    // }
+  }
+}
+
+convertisseur(anArrayAgain);
+
+// console.log(anArrayAgain);
+
+let somme = 0;
+
+let averageSomme;
+
+for (let j = 0; j < anArrayAgain.length ; j ++) {
+  somme = somme + anArrayAgain[j];
+}
+averageSomme = somme / anArrayAgain.length;
+return averageSomme;
+}
+}
+
+console.log(avg(crashTestArray));
+
+console.log(avg(crashTest2));
+
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
