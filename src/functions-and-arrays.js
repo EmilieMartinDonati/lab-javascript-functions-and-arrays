@@ -191,32 +191,71 @@ const wordsUnique = [
   'bring'
 ];
 
+const personalCrashTest = [
+  'butter',
+  'butter',
+  'butter',
+  'butter',
+  'butter',
+  'butter',
+  'butter'
+];
+
 function uniquifyArray (arrTC) {
-  let uniquifiedArray = [];
+
+  let nouvelArray = [];
 
   if (!arrTC.length) return null;
 
   else {
 
-    uniquifiedArray.length === arrTC.length;
-
-
-    function copy (arrTC) {
-      for (let i = 0; i < arrTC.length; i++) {
-        uniquifiedArray.unshift(arrTC[i]);
-      }
-    }
-
-    function cut (uniquifiedArray) {
-      for (let i = 0; i < uniquifiedArray.length / 2 ; i++) {
-          uniquifiedArray.splice([i], 1)
-      }
-    }
-
+  arrTC.sort();
   
+  nouvelArray.push(arrTC[0])
+
+  for (let i = 1 ; i < arrTC.length ; i ++) {
+    if (nouvelArray.indexOf(arrTC[i]) > -1 === false) {
+      nouvelArray.unshift(arrTC[i])
+    }
   }
-  return uniquifiedArray;
+  console.log("------FIRST TRY uniquified array-------")
+  console.log(nouvelArray);
+  }
+
 }
+
+//Test unit doesn't work but manual testing in console does?
+
+uniquifyArray(wordsUnique);
+
+uniquifyArray(personalCrashTest); 
+ 
+
+function uniquifyArrayTest (arrTC) {
+
+  if (!arrTC.length) return null;
+
+  else {
+
+  arrTC.sort();
+
+  for (let i = 1 ; i < arrTC.length ; i ++) {
+      if (arrTC[i] === arrTC[i - 1] && arrTC[i] !== arrTC[i + 1]) {
+         arrTC.splice(i - 1, 1);
+      }
+      if (arrTC[i] === arrTC[i - 1] && arrTC[i] === arrTC[i + 1]) {
+        arrTC.splice(i - 1, 1, "");
+      }
+  }
+}
+    console.log("------SECOND TRY uniquified array ------")
+    console.log(arrTC);
+  }
+
+uniquifyArrayTest(wordsUnique);
+
+uniquifyArrayTest(personalCrashTest); // Still have the same problem but with boolean instead.
+
 
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
@@ -287,7 +326,15 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(someMatrix) {
+
+  let product = someMatrix[0][0] * someMatrix[0][1] * someMatrix[0][2] * someMatrix[0][3]
+
+  console.log(product)
+
+}
+
+greatestProduct(matrix);
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
